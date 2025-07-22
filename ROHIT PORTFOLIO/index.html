@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rohit Jairam | Full Stack Developer</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #22253a;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Container */
+    .container {
+      width: 95%;
+      max-width: 1100px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      gap: 40px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(120deg, #f857a6, #ff5858);
+      color: white;
+      padding: 40px 20px 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgb(248 87 166 / 0.3);
+      width: 100%;
+      max-width: 1100px;
+    }
+    header img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 8px 30px rgb(255 255 255 / 0.5);
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    header .role {
+      font-size: 1.4rem;
+      margin-top: 8px;
+      color: #ffe082;
+      letter-spacing: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    header .socials {
+      margin-top: 20px;
+    }
+    header .socials a {
+      font-size: 1.8rem;
+      margin: 0 14px;
+      color: white;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    header .socials a:hover {
+      color: #ffe082;
+      transform: scale(1.3);
+    }
+
+    /* Left main content */
+    main {
+      background: white;
+      border-radius: 15px;
+      padding: 30px 40px;
+      box-shadow: 0 6px 25px rgb(0 0 0 / 0.12);
+      height: fit-content;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+    section:last-child {
+      margin-bottom: 0;
+    }
+    section h2 {
+      font-size: 2rem;
+      border-bottom: 3px solid #ff5858;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      color: #ff5858;
+      letter-spacing: 1.5px;
+    }
+    section p {
+      font-size: 1.15rem;
+      color: #444;
+      line-height: 1.65;
+    }
+
+    /* Project card */
+    .project-card {
+      background: #f4f4f4;
+      border-radius: 15px;
+      padding: 22px 25px;
+      box-shadow: 0 5px 20px rgb(150 70 120 / 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.22s ease;
+      cursor: default;
+    }
+    .project-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 30px rgb(150 70 120 / 0.16);
+    }
+    .project-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      color: #293462;
+      letter-spacing: 0.03em;
+    }
+
+    /* Right sidebar */
+    aside {
+      background: white;
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 6px 28px rgb(248 87 166 / 0.17);
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+    aside h2 {
+      margin-top: 0;
+      color: #f857a6;
+      font-size: 1.9rem;
+      letter-spacing: 1.5px;
+      border-bottom: 3px solid #f857a6;
+      padding-bottom: 8px;
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 19px;
+    }
+    .contact-info div {
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: #22253a;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      word-wrap: break-word;
+      user-select: all;
+    }
+    .contact-info a {
+      color: #22253a;
+      transition: color 0.25s ease;
+    }
+    .contact-info a:hover {
+      color: #f857a6;
+    }
+    .resume-link {
+      display: inline-block;
+      padding: 16px 26px;
+      background: linear-gradient(90deg, #2ecc71, #43cea2);
+      color: white;
+      font-weight: 700;
+      font-size: 1.15rem;
+      border-radius: 28px;
+      box-shadow: 0 5px 16px rgb(67 206 162 / 0.42);
+      transition: background 0.35s ease;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+    }
+    .resume-link:hover {
+      background: linear-gradient(90deg, #219150, #378e79);
+    }
+
+    /* Skills badges */
+    .badges {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+    }
+    .badge {
+      background: linear-gradient(90deg, #2ecc71, #43cea2);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 3px 15px rgb(67 206 162 / 0.38);
+      cursor: default;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+    .badge i {
+      font-size: 1.3rem;
+    }
+    .badge:hover {
+      background: linear-gradient(90deg, #27ae60, #229954);
+      box-shadow: 0 6px 25px rgb(44 130 67 / 0.55);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1000px) {
+      .container {
+        grid-template-columns: 1fr;
+        margin: 30px auto 50px;
+        gap: 30px;
+      }
+      header {
+        border-radius: 12px 12px 0 0;
+      }
+      main, aside {
+        padding-bottom: 30px;
+      }
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header .role {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+      }
+      header img {
+        width: 100px;
+        height: 100px;
+      }
+      .badge {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+        gap: 8px;
+      }
+      .project-card strong {
+        font-size: 1.1rem;
+      }
+      section h2 {
+        font-size: 1.6rem;
+        padding-bottom: 5px;
+        margin-bottom: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="photo.png" alt="Rohit Jairam" />
+    <h1>Rohit Jairam</h1>
+    <div class="role">Full Stack Developer</div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/rohit-jairam-45rr/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/CYBERROH" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </header>
+
+  <div class="container">
+    <main class="content-left" role="main">
+      <section>
+        <h2>About Me</h2>
+        <p>
+          I am Rohit Jairam, a dedicated full stack developer with a passion for crafting efficient and scalable web applications. With strong expertise in both frontend and backend technologies, I focus on writing clean, maintainable code and delivering seamless user experiences. I thrive in agile environments, continuously learning and applying the latest tools and frameworks to solve complex problems. Beyond coding, I enjoy collaborating with cross-functional teams and mentoring junior developers to foster innovation and growth.
+        </p>
+      </section>
+      <section>
+        <h2>Projects</h2>
+        <article class="project-card" tabindex="0" role="article" aria-label="Calculator project">
+          <strong>Calculator (CSS, HTML, JavaScript)</strong>
+          <p>
+            Developed a fully functional calculator with a responsive design, using HTML, CSS, and JavaScript. Features real-time calculations, clean UI, and smooth animations.
+          </p>
+        </article>
+        <article class="project-card" tabindex="0" role="article" aria-label="CRUD application project">
+          <strong>CRUD Application (MongoDB &amp; React)</strong>
+          <p>
+            Built a full-stack CRUD application demonstrating Create, Read, Update, and Delete operations with MongoDB as the database and React for the frontend. Implemented RESTful APIs and efficient state management.
+          </p>
+        </article>
+        <article class="project-card" tabindex="0" role="article" aria-label="Rock-Paper-Scissors game project">
+          <strong>Rock-Paper-Scissors Game (Java)</strong>
+          <p>
+            Created a classic Rock-Paper-Scissors game in Java that allows the user to play against the computer with score tracking and clear game rules implemented.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <aside role="complementary">
+      <a href="https://drive.google.com/file/d/1Z7yw5JjAwB9RGsMOFOlJ-kAfHnMqWLQn/view?usp=sharing" class="resume-link" target="_blank" rel="noopener noreferrer" aria-label="View my resume">
+        <i class="fa fa-file"></i> View My Resume
+      </a>
+
+      <section>
+        <h2>Skills</h2>
+        <div class="badges">
+          <span class="badge" title="HTML5"><i class="fab fa-html5"></i> HTML5</span>
+          <span class="badge" title="CSS3"><i class="fab fa-css3-alt"></i> CSS3</span>
+          <span class="badge" title="JavaScript"><i class="fab fa-js-square"></i> JavaScript</span>
+          <span class="badge" title="React"><i class="fab fa-react"></i> React</span>
+          <span class="badge" title="Node.js"><i class="fab fa-node-js"></i> Node.js</span>
+          <span class="badge" title="Express.js"><i class="fas fa-server"></i> Express.js</span>
+          <span class="badge" title="MongoDB"><i class="fas fa-database"></i> MongoDB</span>
+          <span class="badge" title="Git"><i class="fab fa-git-alt"></i> Git</span>
+          <span class="badge" title="Java"><i class="fab fa-java"></i> Java</span>
+          <span class="badge" title="Java"><i class="fab fa-java"></i> AWS</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <div class="contact-info">
+          <div>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:rohitjairam9@gmail.com" aria-label="Email Rohit Jairam">rohitjairam9@gmail.com</a>
+          </div>
+          <div>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <a href="tel:+918217096896" aria-label="Call Rohit Jairam">+91 82170 96896</a>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </div>
+</body>
+</html>
